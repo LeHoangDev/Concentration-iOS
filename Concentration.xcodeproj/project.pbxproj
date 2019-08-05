@@ -12,6 +12,8 @@
 		C838BFC922DCB0BF00D2B0BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C838BFC722DCB0BF00D2B0BB /* Main.storyboard */; };
 		C838BFCB22DCB0C100D2B0BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C838BFCA22DCB0C100D2B0BB /* Assets.xcassets */; };
 		C838BFCE22DCB0C100D2B0BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C838BFCC22DCB0C100D2B0BB /* LaunchScreen.storyboard */; };
+		C83B5ADF22E5FD2900BAEA74 /* Concentration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83B5ADE22E5FD2900BAEA74 /* Concentration.swift */; };
+		C83B5AE122E5FDE200BAEA74 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83B5AE022E5FDE200BAEA74 /* Card.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		C838BFCA22DCB0C100D2B0BB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C838BFCD22DCB0C100D2B0BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C838BFCF22DCB0C100D2B0BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C83B5ADE22E5FD2900BAEA74 /* Concentration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Concentration.swift; sourceTree = "<group>"; };
+		C83B5AE022E5FDE200BAEA74 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +58,24 @@
 		C838BFC222DCB0BE00D2B0BB /* Concentration */ = {
 			isa = PBXGroup;
 			children = (
-				C838BFC322DCB0BE00D2B0BB /* AppDelegate.swift */,
+				C838BFD522DCB21100D2B0BB /* Supporting Files */,
 				C838BFC522DCB0BF00D2B0BB /* ViewController.swift */,
 				C838BFC722DCB0BF00D2B0BB /* Main.storyboard */,
-				C838BFCA22DCB0C100D2B0BB /* Assets.xcassets */,
-				C838BFCC22DCB0C100D2B0BB /* LaunchScreen.storyboard */,
+				C83B5ADE22E5FD2900BAEA74 /* Concentration.swift */,
+				C83B5AE022E5FDE200BAEA74 /* Card.swift */,
 				C838BFCF22DCB0C100D2B0BB /* Info.plist */,
 			);
 			path = Concentration;
+			sourceTree = "<group>";
+		};
+		C838BFD522DCB21100D2B0BB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C838BFC322DCB0BE00D2B0BB /* AppDelegate.swift */,
+				C838BFCA22DCB0C100D2B0BB /* Assets.xcassets */,
+				C838BFCC22DCB0C100D2B0BB /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,6 +150,8 @@
 			files = (
 				C838BFC622DCB0BF00D2B0BB /* ViewController.swift in Sources */,
 				C838BFC422DCB0BE00D2B0BB /* AppDelegate.swift in Sources */,
+				C83B5ADF22E5FD2900BAEA74 /* Concentration.swift in Sources */,
+				C83B5AE122E5FDE200BAEA74 /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,7 +304,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = de.lehoang.Concentration.Concentration;
+				PRODUCT_BUNDLE_IDENTIFIER = de.lehoang.Concentration;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -306,7 +322,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = de.lehoang.Concentration.Concentration;
+				PRODUCT_BUNDLE_IDENTIFIER = de.lehoang.Concentration;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
