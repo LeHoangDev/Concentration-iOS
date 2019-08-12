@@ -16,7 +16,9 @@ class Concentration{
     var indexOfOneAndOnlyFaceUpCard: Int?
     
     func chooseCard(at index: Int){
+        //Ignore Matched Cards
         if !cards[index].isMatched{
+            
             if let matchIndex = indexOfOneAndOnlyFaceUpCard, matchIndex != index{
                 //check if cards match
                 if cards[matchIndex].identifier == cards[index].identifier {
@@ -36,6 +38,7 @@ class Concentration{
         }
     }
     
+    //Constructor
     init(numberOfPairsOfCards: Int){
         for _ in 0..<numberOfPairsOfCards {
             let card = Card()
@@ -44,6 +47,7 @@ class Concentration{
             //cards.append(card)
             cards += [card, card]
         }
-        //Shuffle the cards
+        cards.shuffle();
+        // TODO: Shuffle the cards
     }
 }

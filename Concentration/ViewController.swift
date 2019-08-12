@@ -22,13 +22,17 @@ class ViewController: UIViewController {
         }
     }
     //Outlet Instant Variable
-    // !
+    // ! means "I know this optional variable definitely has a value, so let me use it directly."
     @IBOutlet weak var flipCountLabel: UILabel!
     
     //[UIButton] == Array<UIButton>
     @IBOutlet var cardButtons: [UIButton]!
     
+    @IBOutlet weak var NewGameButton: UIButton!
     
+    @IBAction func NewGame(_ sender: Any) {
+        
+    }
     
     @IBAction func touchCard(_ sender: UIButton) {
         flipCount += 1
