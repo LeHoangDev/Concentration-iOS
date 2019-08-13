@@ -16,9 +16,10 @@ class Concentration{
     var indexOfOneAndOnlyFaceUpCard: Int?
     
     func chooseCard(at index: Int){
+        print("Card Identifier: ", cards[index].identifier)
         //Ignore Matched Cards
         if !cards[index].isMatched{
-            
+            //If there is on card faceup and not the same as index
             if let matchIndex = indexOfOneAndOnlyFaceUpCard, matchIndex != index{
                 //check if cards match
                 if cards[matchIndex].identifier == cards[index].identifier {
@@ -42,7 +43,8 @@ class Concentration{
     init(numberOfPairsOfCards: Int){
         for _ in 0..<numberOfPairsOfCards {
             let card = Card()
-            //Weil Card ein Struct ist, wird eine Kopie übergeben
+            //Card is Struct because of that a copy will be passed
+            //Have same identifier
             //cards.append(card)
             //cards.append(card)
             cards += [card, card]

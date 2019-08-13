@@ -21,17 +21,26 @@ class ViewController: UIViewController {
             flipCountLabel.text = "Flips: \(flipCount)"
         }
     }
+    
+    //Alternative var emojiChoices = ["👻","🎃","👻","🎃"]
+    var emojiChoices: [String] = ["👻","🎃","🎉","🎊","😎","👽","👺","💀","👹","💩","☠️","🙈"]
+    var emoji = Dictionary<Int, String>()
+    //Alternative var emoji = [Int, String]()
+    
     //Outlet Instant Variable
     // ! means "I know this optional variable definitely has a value, so let me use it directly."
     @IBOutlet weak var flipCountLabel: UILabel!
     
     //[UIButton] == Array<UIButton>
+    /// Contains all Buttons from View
     @IBOutlet var cardButtons: [UIButton]!
     
-    @IBOutlet weak var NewGameButton: UIButton!
-    
     @IBAction func NewGame(_ sender: Any) {
-        
+        game = Concentration(numberOfPairsOfCards: cardButtons.count / 2)
+        emoji = Dictionary<Int, String>();
+        emojiChoices = ["👻","🎃","🎉","🎊","😎","👽","👺","💀","👹","💩","☠️","🙈"]
+        flipCount = 0
+        updateViewFromModel()
     }
     
     @IBAction func touchCard(_ sender: UIButton) {
@@ -50,6 +59,9 @@ class ViewController: UIViewController {
         
     }
     
+    
+    
+    /// Updates View From Model Data
     func updateViewFromModel(){
         //for button in 0..<cardButtons.count
         for index in cardButtons.indices{
@@ -65,16 +77,18 @@ class ViewController: UIViewController {
         
         }
     }
-    //Alternative var emojiChoices = ["👻","🎃","👻","🎃"]
-    var emojiChoices: [String] = ["👻","🎃","🎉","🎊","😎","👽","👺","💀","☠️","💩","👹"]
-    var emoji = Dictionary<Int, String>()
-    //Alternative var emoji = [Int, String]()
     
+    /// <#Description#>
+    /// Get Emoji or assigns an emojis to cards
+    /// - Parameter card: <#card description#>
+    /// - Returns: <#return value description#>
     func emoji(for card: Card) -> String{
+        //if there is no emoji for that card and there are still emojis remaining
         if emoji[card.identifier] == nil, emojiChoices.count > 0 {
+            //choosen one random emoji and assign in into the dictionary
             let randomIndex = Int(arc4random_uniform(UInt32(emojiChoices.count)))
             emoji[card.identifier] = emojiChoices.remove(at: randomIndex)
-            }
+        }
         /*
         if emoji[card.identifier] == nil {
         if emojiChoices.count > 0 {
@@ -84,6 +98,8 @@ class ViewController: UIViewController {
  
         }
         */
+        
+        //If there's no emoji for that card return "?"
         return emoji[card.identifier] ?? "?"
         
         /*Alternative

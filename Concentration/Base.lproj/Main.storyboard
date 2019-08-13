@@ -200,7 +200,6 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="NewGameButton" destination="rAS-Iv-sgi" id="5mN-od-Pvx"/>
                         <outlet property="flipCountLabel" destination="ayn-hy-Qzn" id="9dA-Wi-x8k"/>
                         <outletCollection property="cardButtons" destination="LNU-WA-AWF" collectionClass="NSMutableArray" id="ZPq-XZ-LPi"/>
                         <outletCollection property="cardButtons" destination="huf-0h-l5K" collectionClass="NSMutableArray" id="V8g-qR-gpU"/>
