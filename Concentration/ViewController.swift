@@ -12,10 +12,15 @@ class ViewController: UIViewController {
     //If all propertys are initialized there is a init()
     //lazy: it initialize when someone use ist
     //lazy: has not didSet...
-    lazy var game = Concentration(numberOfPairsOfCards: cardButtons.count / 2)
+    private lazy var game = Concentration(numberOfPairsOfCards: numberOfPairOfCards)
+    
+    
+    var numberOfPairOfCards : Int {
+        return (cardButtons.count / 2)
+    }
     
     //Alternative var flipCount = 0
-    var flipCount: Int = 0 {
+    private(set) var flipCount: Int = 0 {
         //Property Observer
         didSet{
             flipCountLabel.text = "Flips: \(flipCount)"
@@ -23,19 +28,19 @@ class ViewController: UIViewController {
     }
     
     //Alternative var emojiChoices = ["👻","🎃","👻","🎃"]
-    var emojiChoices: [String] = ["👻","🎃","🎉","🎊","😎","👽","👺","💀","👹","💩","☠️","🙈"]
-    var emoji = Dictionary<Int, String>()
+    private var emojiChoices: [String] = ["👻","🎃","🎉","🎊","😎","👽","👺","💀","👹","💩","☠️","🙈"]
+    private var emoji = Dictionary<Int, String>()
     //Alternative var emoji = [Int, String]()
     
     //Outlet Instant Variable
     // ! means "I know this optional variable definitely has a value, so let me use it directly."
-    @IBOutlet weak var flipCountLabel: UILabel!
+    @IBOutlet private weak var flipCountLabel: UILabel!
     
     //[UIButton] == Array<UIButton>
     /// Contains all Buttons from View
-    @IBOutlet var cardButtons: [UIButton]!
+    @IBOutlet private var cardButtons: [UIButton]!
     
-    @IBAction func NewGame(_ sender: Any) {
+    @IBAction private func NewGame(_ sender: Any) {
         game = Concentration(numberOfPairsOfCards: cardButtons.count / 2)
         emoji = Dictionary<Int, String>();
         emojiChoices = ["👻","🎃","🎉","🎊","😎","👽","👺","💀","👹","💩","☠️","🙈"]
@@ -43,7 +48,7 @@ class ViewController: UIViewController {
         updateViewFromModel()
     }
     
-    @IBAction func touchCard(_ sender: UIButton) {
+    @IBAction private func touchCard(_ sender: UIButton) {
         flipCount += 1
         //let sind Constant var normale Variablen
         //cardButtons.firstIndex(of: sender) gibt Optional zurueck
@@ -62,7 +67,7 @@ class ViewController: UIViewController {
     
     
     /// Updates View From Model Data
-    func updateViewFromModel(){
+    private func updateViewFromModel(){
         //for button in 0..<cardButtons.count
         for index in cardButtons.indices{
             let button = cardButtons[index]
@@ -82,7 +87,7 @@ class ViewController: UIViewController {
     /// Get Emoji or assigns an emojis to cards
     /// - Parameter card: <#card description#>
     /// - Returns: <#return value description#>
-    func emoji(for card: Card) -> String{
+    private func emoji(for card: Card) -> String{
         //if there is no emoji for that card and there are still emojis remaining
         if emoji[card.identifier] == nil, emojiChoices.count > 0 {
             //choosen one random emoji and assign in into the dictionary

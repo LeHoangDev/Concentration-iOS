@@ -11,11 +11,31 @@ class Concentration{
     
     
     //Alternative var cars = [Card]
-    var cards = Array<Card>()
+    private(set) var cards = Array<Card>()
     
-    var indexOfOneAndOnlyFaceUpCard: Int?
+    private var indexOfOneAndOnlyFaceUpCard: Int? {
+        get{
+            var foundIndex: Int?
+            for index in cards.indices {
+                if cards[index].isFaceUp{
+                    if foundIndex == nil {
+                        foundIndex = index
+                    } else {
+                        return nil
+                    }
+                }
+            }
+            return foundIndex
+        }
+        set(newValue){
+            for index in cards.indices {
+                cards[index].isFaceUp = (index == newValue)
+            }
+        }
+    }
     
     func chooseCard(at index: Int){
+        assert(cards.indices.contains(index), "Concentrstion.chooserCard(at: \(index)): chosen index not in the cards")
         print("Card Identifier: ", cards[index].identifier)
         //Ignore Matched Cards
         if !cards[index].isMatched{
@@ -27,13 +47,7 @@ class Concentration{
                     cards[index].isMatched = true
                 }
                 cards[index].isFaceUp = true
-                indexOfOneAndOnlyFaceUpCard = nil
             } else {
-                //either no cards or 2 cards are face up
-                for flipDownIndex in cards.indices{
-                    cards[flipDownIndex].isFaceUp = false
-                }
-                cards[index].isFaceUp = true
                 indexOfOneAndOnlyFaceUpCard = index
             }
         }
@@ -41,6 +55,7 @@ class Concentration{
     
     //Constructor
     init(numberOfPairsOfCards: Int){
+        assert(numberOfPairsOfCards > 0, "Concentrstion.init(\(numberOfPairsOfCards)): you must have at least one pair of cards")
         for _ in 0..<numberOfPairsOfCards {
             let card = Card()
             //Card is Struct because of that a copy will be passed
