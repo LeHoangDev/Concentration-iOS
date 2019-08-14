@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Concentration{
+struct Concentration{
     
     
     //Alternative var cars = [Card]
@@ -34,7 +34,7 @@ class Concentration{
         }
     }
     
-    func chooseCard(at index: Int){
+    mutating func chooseCard(at index: Int){
         assert(cards.indices.contains(index), "Concentrstion.chooserCard(at: \(index)): chosen index not in the cards")
         print("Card Identifier: ", cards[index].identifier)
         //Ignore Matched Cards
