@@ -36,13 +36,12 @@ struct Concentration{
     
     mutating func chooseCard(at index: Int){
         assert(cards.indices.contains(index), "Concentrstion.chooserCard(at: \(index)): chosen index not in the cards")
-        print("Card Identifier: ", cards[index].identifier)
         //Ignore Matched Cards
         if !cards[index].isMatched{
             //If there is on card faceup and not the same as index
             if let matchIndex = indexOfOneAndOnlyFaceUpCard, matchIndex != index{
                 //check if cards match
-                if cards[matchIndex].identifier == cards[index].identifier {
+                if cards[matchIndex] == cards[index]{
                     cards[matchIndex].isMatched = true
                     cards[index].isMatched = true
                 }

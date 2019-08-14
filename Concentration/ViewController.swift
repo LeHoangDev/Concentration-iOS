@@ -29,8 +29,8 @@ class ViewController: UIViewController {
     
     //Alternative var emojiChoices = ["👻","🎃","👻","🎃"]
     private var emojiChoices: [String] = ["👻","🎃","🎉","🎊","😎","👽","👺","💀","👹","💩","☠️","🙈"]
-    private var emoji = Dictionary<Int, String>()
-    //Alternative var emoji = [Int, String]()
+    private var emoji = Dictionary<Card, String>()
+    //Alternative var emoji = [Card, String]()
     
     //Outlet Instant Variable
     // ! means "I know this optional variable definitely has a value, so let me use it directly."
@@ -42,7 +42,7 @@ class ViewController: UIViewController {
     
     @IBAction private func NewGame(_ sender: Any) {
         game = Concentration(numberOfPairsOfCards: cardButtons.count / 2)
-        emoji = Dictionary<Int, String>();
+        emoji = Dictionary<Card, String>();
         emojiChoices = ["👻","🎃","🎉","🎊","😎","👽","👺","💀","👹","💩","☠️","🙈"]
         flipCount = 0
         updateViewFromModel()
@@ -83,15 +83,14 @@ class ViewController: UIViewController {
         }
     }
     
-    /// <#Description#>
     /// Get Emoji or assigns an emojis to cards
-    /// - Parameter card: <#card description#>
-    /// - Returns: <#return value description#>
+    /// - Parameter card: Card
+    /// - Returns: Emoji for that card
     private func emoji(for card: Card) -> String{
         //if there is no emoji for that card and there are still emojis remaining
-        if emoji[card.identifier] == nil, emojiChoices.count > 0 {
+        if emoji[card] == nil, emojiChoices.count > 0 {
             //choosen one random emoji and assign in into the dictionary
-            emoji[card.identifier] = emojiChoices.remove(at: emojiChoices.count.arc4random)
+            emoji[card] = emojiChoices.remove(at: emojiChoices.count.arc4random)
         }
         /*
         if emoji[card.identifier] == nil {
@@ -104,7 +103,7 @@ class ViewController: UIViewController {
         */
         
         //If there's no emoji for that card return "?"
-        return emoji[card.identifier] ?? "?"
+        return emoji[card] ?? "?"
         
         /*Alternative
          if emoji[card.identifier] != nil {
