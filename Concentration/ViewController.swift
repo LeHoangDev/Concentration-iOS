@@ -28,7 +28,8 @@ class ViewController: UIViewController {
     }
     
     //Alternative var emojiChoices = ["👻","🎃","👻","🎃"]
-    private var emojiChoices: [String] = ["👻","🎃","🎉","🎊","😎","👽","👺","💀","👹","💩","☠️","🙈"]
+    //private var emojiChoices: [String] = ["👻","🎃","🎉","🎊","😎","👽","👺","💀","👹","💩","☠️","🙈"]
+    private var emojiChoices = "👻🎃🎉🎊😎👽👺💀👹💩☠️🙈"
     private var emoji = Dictionary<Card, String>()
     //Alternative var emoji = [Card, String]()
     
@@ -43,7 +44,8 @@ class ViewController: UIViewController {
     @IBAction private func NewGame(_ sender: Any) {
         game = Concentration(numberOfPairsOfCards: cardButtons.count / 2)
         emoji = Dictionary<Card, String>();
-        emojiChoices = ["👻","🎃","🎉","🎊","😎","👽","👺","💀","👹","💩","☠️","🙈"]
+        //emojiChoices = ["👻","🎃","🎉","🎊","😎","👽","👺","💀","👹","💩","☠️","🙈"]
+        emojiChoices = "👻🎃🎉🎊😎👽👺💀👹💩☠️🙈"
         flipCount = 0
         updateViewFromModel()
     }
@@ -90,7 +92,9 @@ class ViewController: UIViewController {
         //if there is no emoji for that card and there are still emojis remaining
         if emoji[card] == nil, emojiChoices.count > 0 {
             //choosen one random emoji and assign in into the dictionary
-            emoji[card] = emojiChoices.remove(at: emojiChoices.count.arc4random)
+            let radomStringIndex = emojiChoices.index(emojiChoices.startIndex, offSet:emojiChoices.count.arc4random)
+            emoji[card] = String(emojiChoices.remove(at: emojiChoices.count.arc4random))
+            //emoji[card] = emojiChoices.remove(at: emojiChoices.count.arc4random)
         }
         /*
         if emoji[card.identifier] == nil {
