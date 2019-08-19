@@ -23,8 +23,18 @@ class ViewController: UIViewController {
     private(set) var flipCount: Int = 0 {
         //Property Observer
         didSet{
-            flipCountLabel.text = "Flips: \(flipCount)"
+            updateFlipCountLabel()
         }
+    }
+    
+    private func updateFlipCountLabel(){
+        let attributes: [NSAttributedString.Key:Any] = [
+            .strokeWidth: 5.0,
+            .strokeColor: #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
+        ]
+        let attributedString = NSAttributedString(string: "Flips: \(flipCount)", attributes: attributes)
+        //flipCountLabel.text = "Flips: \(flipCount)"
+        flipCountLabel.attributedText = attributedString
     }
     
     //Alternative var emojiChoices = ["👻","🎃","👻","🎃"]
@@ -35,7 +45,11 @@ class ViewController: UIViewController {
     
     //Outlet Instant Variable
     // ! means "I know this optional variable definitely has a value, so let me use it directly."
-    @IBOutlet private weak var flipCountLabel: UILabel!
+    @IBOutlet private weak var flipCountLabel: UILabel! {
+        didSet {
+            updateFlipCountLabel()
+        }
+    }
     
     //[UIButton] == Array<UIButton>
     /// Contains all Buttons from View
@@ -92,8 +106,8 @@ class ViewController: UIViewController {
         //if there is no emoji for that card and there are still emojis remaining
         if emoji[card] == nil, emojiChoices.count > 0 {
             //choosen one random emoji and assign in into the dictionary
-            let radomStringIndex = emojiChoices.index(emojiChoices.startIndex, offSet:emojiChoices.count.arc4random)
-            emoji[card] = String(emojiChoices.remove(at: emojiChoices.count.arc4random))
+            let radomStringIndex = emojiChoices.index(emojiChoices.startIndex, offsetBy: emojiChoices.count.arc4random)
+            emoji[card] = String(emojiChoices.remove(at: radomStringIndex))
             //emoji[card] = emojiChoices.remove(at: emojiChoices.count.arc4random)
         }
         /*
