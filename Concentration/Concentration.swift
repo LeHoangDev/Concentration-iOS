@@ -15,17 +15,29 @@ struct Concentration{
     
     private var indexOfOneAndOnlyFaceUpCard: Int? {
         get{
-            var foundIndex: Int?
-            for index in cards.indices {
-                if cards[index].isFaceUp{
-                    if foundIndex == nil {
-                        foundIndex = index
-                    } else {
-                        return nil
-                    }
-                }
-            }
-            return foundIndex
+            /* Alternative
+            let faceUpCardIndices = cards.indices.filter {
+                cards[$0].isFaceUp
+            return faceUpCardIndices.count == 1 ? faceUpCardIndices.first : nil
+            }*/
+            
+            //Mit Extension
+            return cards.indices.filter {
+                cards[$0].isFaceUp
+                }.oneAndOnly
+            
+//
+//            var foundIndex: Int?
+//            for index in cards.indices {
+//                if cards[index].isFaceUp{
+//                    if foundIndex == nil {
+//                        foundIndex = index
+//                    } else {
+//                        return nil
+//                    }
+//                }
+//            }
+//            return foundIndex
         }
         set(newValue){
             for index in cards.indices {
@@ -48,6 +60,10 @@ struct Concentration{
                 cards[index].isFaceUp = true
             } else {
                 indexOfOneAndOnlyFaceUpCard = index
+                
+                if (indexOfOneAndOnlyFaceUpCard != nil) {
+                    
+                }
             }
         }
     }
@@ -65,5 +81,11 @@ struct Concentration{
         }
         cards.shuffle();
         // TODO: Shuffle the cards
+    }
+}
+
+extension Collection {
+    var oneAndOnly: Element? {
+        return count == 1 ? first: nil
     }
 }
