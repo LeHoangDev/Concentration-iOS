@@ -34,11 +34,17 @@
                                         <rect key="frame" x="18" y="68" width="101" height="60"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                         <state key="normal" title="Faces"/>
+                                        <connections>
+                                            <action selector="changeTheme:" destination="mze-bQ-w78" eventType="touchUpInside" id="tgo-fk-sQ8"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3aF-TX-3l6">
                                         <rect key="frame" x="0.0" y="136" width="137" height="60"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                         <state key="normal" title="Animals"/>
+                                        <connections>
+                                            <action selector="changeTheme:" destination="mze-bQ-w78" eventType="touchUpInside" id="KlX-8d-gby"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
